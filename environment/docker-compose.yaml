@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  node1:
+    build:
+      context: ./node
+      dockerfile: node.dockerfile
+    environment:
+        - NODE_ADDR=node1
+
+  node2:
+    build:
+      context: ./node
+      dockerfile: node.dockerfile
+    environment:
+      - NODE_ADDR=node2
+      - CLUSTER_ADDR=node1
+
+  node3:
+    build:
+      context: ./node
+      dockerfile: node.dockerfile
+    environment:
+      - NODE_ADDR=node3
+      - CLUSTER_ADDR=node1
